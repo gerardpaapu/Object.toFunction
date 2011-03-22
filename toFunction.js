@@ -33,14 +33,14 @@ Object.toFunction = (function () {
     // Arrays of the form [key, arg, ...] become a function that will call the 
     // method 'key' with (arg, ...) on its first argument.
     //
-    //    var fn, obj;
+    //     var fn, obj;
     //
-    //    obj = [1, 2, 3];
-    //    fn = Object.toFunction(['sort', function (a, b) {
-    //        return a - b; 
-    //    }]); 
+    //     obj = [1, 2, 3];
+    //     fn = Object.toFunction(['sort', function (a, b) {
+    //         return a - b; 
+    //     }]); 
     //
-    //    fn(obj); // does a reverse sort
+    //     fn(obj); // does a reverse sort
     //
     // Every other value becomes a function that returns that value 
     //
