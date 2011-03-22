@@ -1,0 +1,48 @@
+Object.toFunction converts an arbitrary javascript object to a callable function
+intended for use with higher order functions etc.
+
+Functions are returned unmodified.
+
+"Keys" (strings and numbers) become a function that will lookup that key 
+in its first argument.
+    
+    var key = 'length',
+        fn = Object.toFunction(key),
+        ls = ['poo', 'farts', 'donkey'];
+
+    ls.map(fn); // [3, 5, 6]
+
+Objects become a function that will lookup its argument in that object.
+
+    var fn, dict, ls;
+
+    ls = ['cats', 'dogs', 'elephant'];
+
+    dict = {
+        cats: 'meow',
+        dogs: 'woof',
+        elephant: 'snuffle'
+    };
+
+    fn = Object.toFunction(dict);
+
+    ls.map(fn); // ['meow', 'woof', 'snuffle']
+    
+
+Arrays of the form [key, arg, ...] become a function that will call the 
+method 'key' with (arg, ...) on its first argument.
+
+   var fn, obj;
+
+   obj = [1, 2, 3];
+   fn = Object.toFunction(['sort', function (a, b) {
+       return a - b; 
+   }]); 
+
+   fn(obj); // does a reverse sort
+
+Every other value becomes a function that returns that value 
+
+    var fn = Object.toFunction(null);
+
+    fn() === null; // true
