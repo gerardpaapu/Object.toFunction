@@ -73,7 +73,7 @@ describe('monkeypatch bullshit', function () {
         expect(['poo', 'fart'].$map(['toUpperCase'])).toEqual(['POO', 'FART']);
     });
 
-    it('wraps Array::map', function () {
+    it('wraps Array::filter', function () {
         expect(['poo', 'fart'].$filter(/^p/)).toEqual(['poo']);
     });
 });
