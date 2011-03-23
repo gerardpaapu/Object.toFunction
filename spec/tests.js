@@ -65,3 +65,15 @@ describe('Basic tests', function () {
         expect(fn()).toEqual(null);
     });
 });
+
+describe('monkeypatch bullshit', function () {
+    Object.toFunction.monkeyPatch();
+
+    it('wraps Array::map', function () {
+        expect(['poo', 'fart'].$map(['toUpperCase'])).toEqual(['POO', 'FART']);
+    });
+
+    it('wraps Array::map', function () {
+        expect(['poo', 'fart'].$filter(/^p/)).toEqual(['poo']);
+    });
+});
