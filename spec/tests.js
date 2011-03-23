@@ -1,8 +1,8 @@
 /*globals require: false, console: false, describe: false, it: false, expect: false */
 
-require('../toFunction.js');
 
 describe('Basic tests', function () {
+    require('../toFunction.js');
     it('creates a key function from a string', function () {
         var key = 'length',
             fn = Object.toFunction(key),
@@ -67,6 +67,7 @@ describe('Basic tests', function () {
 });
 
 describe('monkeypatch bullshit', function () {
+    require('../monkeypatch.js');
     Object.toFunction.monkeyPatch();
 
     it('wraps Array::map', function () {
