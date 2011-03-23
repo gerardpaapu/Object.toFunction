@@ -47,6 +47,7 @@ Object.toFunction = (function () {
     //    var fn = Object.toFunction(null);
     //    fn() === null; // true
     //
+    /*jshint boss: true */
     var toFunction,
 
         // each take a javascript value of a particular type and
@@ -56,12 +57,13 @@ Object.toFunction = (function () {
         // type(obj) -> String: sniffs for builtin types
         type,    
 
-        // wrapper(fn) -> fn: wraps higher order function
-        //                    so that they can take arbitrary types
+        // wrapper(fn) -> Function:
+        // wraps higher order function
+        // so that they can take arbitrary types
         wrapper; 
 
     toFunction = function (obj) {
-        if (type(obj.toFunction) === 'function') {
+        if (obj != null && type(obj.toFunction) === 'function') {
             return obj.toFunction();
         }
 
@@ -85,7 +87,7 @@ Object.toFunction = (function () {
 
     matcher = function (pattern) {
         return function (str) {
-            new RegExp(pattern).exec(str);
+            return new RegExp(pattern).exec(str);
         };
     }; 
 
